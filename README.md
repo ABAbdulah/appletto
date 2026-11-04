@@ -4,13 +4,30 @@ One-page website for **APPLETTO (SMC-PRIVATE) LIMITED**, a software company buil
 
 It is a single static file — [`index.html`](index.html) — with no build step, no dependencies and no framework. Open it in a browser to view it, edit it in any text editor, and host it anywhere that serves static files.
 
-## Publishing it on GitHub Pages
+## Deploying
 
-1. Repo **Settings → Pages**
-2. **Source:** Deploy from a branch
-3. **Branch:** `main`, folder `/ (root)` → **Save**
+### Vercel (primary)
 
-The site goes live at `https://abAbdulah.github.io/appletto/` within a minute or two. To use a custom domain, add it under the same Pages screen and point the DNS at GitHub.
+Import the repo once and every push to `main` redeploys automatically:
+
+1. [vercel.com/new](https://vercel.com/new) → **Import Git Repository** → `ABAbdulah/appletto`
+2. Framework preset: **Other**. Leave the build command and output directory empty — the site is already static.
+3. **Deploy**
+
+Settings live in [`vercel.json`](vercel.json): `cleanUrls` so `/index.html` serves at `/`, plus a few standard security headers.
+
+For a custom domain, add it under **Project → Settings → Domains** and point the DNS at Vercel.
+
+From the CLI instead:
+
+```bash
+npx vercel login
+npx vercel --prod
+```
+
+### GitHub Pages (fallback)
+
+Also enabled, serving the same branch at `https://ababdulah.github.io/appletto/`. Turn it off under **Settings → Pages** if you only want Vercel.
 
 ## Things to fill in
 
